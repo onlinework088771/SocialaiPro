@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 4%;
+        --surface: 0 0% 7%;
+        --surface-hover: 0 0% 14%;
+        --primary: 217 91% 60%;
+        --primary-hover: 217 91% 50%;
+        --gradient-from: 217 91% 60%;
+        --gradient-to: 271 81% 56%;
+        --text-primary: 0 0% 98%;
+        --text-secondary: 0 0% 61%;
+        --border: 0 0% 15%;
+        --border-hover: 0 0% 20%;
+        --success: 142 71% 45%;
+        --error: 0 84% 60%;
+        --warning: 38 92% 50%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-[#0a0a0a] text-white;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        margin: 0;
+        overflow-x: hidden;
+        background:
+            radial-gradient(circle at top left, rgba(59, 130, 246, 0.10), transparent 24%),
+            radial-gradient(circle at top right, rgba(168, 85, 247, 0.10), transparent 20%),
+            #0a0a0a;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', 'Inter', sans-serif;
+        @apply font-bold;
+    }
+}
+
+@layer components {
+    .gradient-primary {
+        background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+    }
+    
+    .gradient-card {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+    }
+    
+    .glass-effect {
+        background: rgba(26, 26, 26, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .stat-card {
+        @apply bg-[#121218]/90 border border-white/10 rounded-2xl p-6 transition-all duration-300 backdrop-blur-xl;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+    
+    .stat-card:hover {
+        @apply border-blue-500/40 shadow-lg shadow-blue-500/10;
+        transform: translateY(-2px);
+    }
+    
+    .btn-primary {
+        @apply bg-gradient-to-r from-blue-500 via-violet-500 to-fuchsia-600 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30;
+        transform: translateZ(0);
+    }
+    
+    .btn-secondary {
+        @apply bg-[#1a1a1a] border border-[#27272a] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:border-blue-500 hover:bg-[#1f1f1f];
+    }
+    
+    .input-dark {
+        @apply w-full px-4 py-3 bg-[#1a1a1a] border border-[#27272a] rounded-lg text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all;
+    }
+
+    .composer-card {
+        @apply bg-[#101014]/95 border border-white/10 rounded-[24px] shadow-xl overflow-hidden backdrop-blur-xl;
+        transition: all 0.3s ease;
+    }
+
+    .composer-card:hover {
+        @apply border-white/20 shadow-2xl;
+        transform: translateY(-1px);
+    }
+
+    .neon-glow {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+
+    .neon-glow-strong {
+        box-shadow: 0 0 25px rgba(139, 92, 246, 0.5), 0 0 50px rgba(59, 130, 246, 0.2);
+    }
+
+    .composer-textarea {
+        @apply w-full bg-transparent text-white resize-none outline-none;
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .composer-textarea::placeholder {
+        @apply text-zinc-500;
+    }
+
+    .glow-button {
+        @apply relative overflow-hidden;
+        transition: all 0.3s ease;
+    }
+
+    .glow-button:active::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: inherit;
+        animation: rippleEffect 0.4s ease-out forwards;
+    }
+}
+
+@layer utilities {
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+    
+    .animate-slide-up {
+        animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .animate-slide-up-delay-1 {
+        animation: slideUp 0.5s ease-out 0.1s forwards;
+        opacity: 0;
+    }
+
+    .animate-slide-up-delay-2 {
+        animation: slideUp 0.5s ease-out 0.2s forwards;
+        opacity: 0;
+    }
+
+    .animate-slide-up-delay-3 {
+        animation: slideUp 0.5s ease-out 0.3s forwards;
+        opacity: 0;
+    }
+
+    .animate-slide-up-delay-4 {
+        animation: slideUp 0.5s ease-out 0.4s forwards;
+        opacity: 0;
+    }
+    
+    .animate-counter {
+        animation: counter 2s ease-out;
+    }
+
+    .animate-pulse-glow {
+        animation: pulseGlow 2s ease-in-out infinite;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes counter {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rippleEffect {
+    from { transform: scale(0); opacity: 0.5; }
+    to { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(139, 92, 246, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.2); }
+}
+
+@media (max-width: 768px) {
+    .stat-card:hover {
+        transform: none;
+    }
+
+    .btn-primary {
+        @apply w-full justify-center;
+    }
+}
+
+/* Emoji Picker Dark Theme Override */
+.EmojiPickerReact {
+    --epr-bg-color: #1a1a1a !important;
+    --epr-category-label-bg-color: #1a1a1a !important;
+    --epr-text-color: #fff !important;
+    --epr-hover-bg-color: #27272a !important;
+    --epr-search-input-bg-color: #0f0f13 !important;
+    --epr-search-border-color: rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8) !important;
+}
+
+/* React Big Calendar Dark Theme */
+.calendar-container .rbc-calendar {
+    font-family: 'Inter', sans-serif;
+    color: #f4f4f5;
+}
+
+.calendar-container .rbc-off-range-bg,
+.calendar-container .rbc-time-content,
+.calendar-container .rbc-time-header-content,
+.calendar-container .rbc-month-row,
+.calendar-container .rbc-day-bg,
+.calendar-container .rbc-header,
+.calendar-container .rbc-toolbar,
+.calendar-container .rbc-time-view,
+.calendar-container .rbc-timeslot-group {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.calendar-container .rbc-header {
+    padding: 12px;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a1a1aa;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.calendar-container .rbc-today {
+    background-color: rgba(59, 130, 246, 0.08);
+}
+
+.calendar-container .rbc-event {
+    padding: 4px 6px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.calendar-container .rbc-toolbar {
+    margin-bottom: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.calendar-container .rbc-toolbar button {
+    color: #f4f4f5;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 8px 16px;
+    transition: all 0.2s;
+}
+
+.calendar-container .rbc-toolbar button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+.calendar-container .rbc-toolbar button.rbc-active {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: white;
+    border-color: transparent;
+}
