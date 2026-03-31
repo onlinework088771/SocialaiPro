@@ -903,6 +903,13 @@ async def startup_event():
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
+    @app.get("/")
+async def root():
+    return {"status": "ok", "service": "SocialAiPro API"}
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
     try:
         scheduler_service.shutdown()
     except Exception:
